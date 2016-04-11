@@ -16,6 +16,7 @@ import gherkin.deps.com.google.gson.JsonObject;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.http.HttpResponse;
 
 public class GithubReaderServiceTest {
 
@@ -30,14 +31,10 @@ public class GithubReaderServiceTest {
 
   @Test
   public void testReadJsonFromUrl() throws IOException, JSONException, HttpException {
-
-//    sut.readJsonFromUrl(githubUrl);
-//    
-//    getMethod = new GetMethod(githubUrl);
-//    responseStatusCode = client.executeMethod(getMethod);
-
-    assertEquals(200, sut.retrieveRequestStatus(githubUrl));
-
+    
+    //test
+    HttpResponse response = sut.retrieveRequestResponse(githubUrl);
+    assertEquals(200, response.getStatusLine().getStatusCode());
   }
 
 }
