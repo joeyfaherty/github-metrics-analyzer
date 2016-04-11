@@ -21,8 +21,8 @@ public class GithubReaderServiceTest {
 
   private String githubUrl = "https://api.github.com/users/joeyfaherty";
 
-  @Inject
-  private GithubReaderService sut;
+  //@Inject
+  private GithubReaderService sut = new GithubReaderService();
 
   private HttpClient client = new HttpClient();
   private GetMethod getMethod;
@@ -31,12 +31,12 @@ public class GithubReaderServiceTest {
   @Test
   public void testReadJsonFromUrl() throws IOException, JSONException, HttpException {
 
-    sut.readJsonFromUrl(githubUrl);
-    
-    getMethod = new GetMethod(githubUrl);
-    responseStatusCode = client.executeMethod(getMethod);
+//    sut.readJsonFromUrl(githubUrl);
+//    
+//    getMethod = new GetMethod(githubUrl);
+//    responseStatusCode = client.executeMethod(getMethod);
 
-    assertEquals(responseStatusCode, 200);
+    assertEquals(200, sut.retrieveRequestStatus(githubUrl));
 
   }
 
