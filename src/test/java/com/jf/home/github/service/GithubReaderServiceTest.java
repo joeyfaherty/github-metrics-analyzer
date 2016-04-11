@@ -23,17 +23,14 @@ public class GithubReaderServiceTest {
   private String githubUrl = "https://api.github.com/users/joeyfaherty";
 
   //@Inject
+  // TODO: add guice for DI
   private GithubReaderService sut = new GithubReaderService();
-
-  private HttpClient client = new HttpClient();
-  private GetMethod getMethod;
-  private int responseStatusCode;
+  
+  private HttpResponse response;
 
   @Test
-  public void testReadJsonFromUrl() throws IOException, JSONException, HttpException {
-    
-    //test
-    HttpResponse response = sut.retrieveRequestResponse(githubUrl);
+  public void validateResponseIsOk() throws IOException, JSONException, HttpException {
+    response = sut.retrieveRequestResponse(githubUrl);
     assertEquals(200, response.getStatusLine().getStatusCode());
   }
 

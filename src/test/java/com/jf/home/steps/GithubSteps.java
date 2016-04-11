@@ -2,7 +2,10 @@ package com.jf.home.steps;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 
 import com.jf.home.github.service.GithubReaderService;
 
@@ -17,7 +20,7 @@ public class GithubSteps {
   private HttpResponse response;
   
   @When("^I GET \"([^\"]*)\"$")
-  public void callGithubApi(String url) {
+  public void callGithubApi(String url) throws ClientProtocolException, IOException {
     response = githubReaderService.retrieveRequestResponse(url);
   }
   

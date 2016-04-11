@@ -21,17 +21,14 @@ import org.json.JSONObject;
 @Singleton
 public class GithubReaderService {
 
-  public HttpResponse retrieveRequestResponse(String url) {
+  // TODO: take github Url from properties file
+
+  public HttpResponse retrieveRequestResponse(String url)
+      throws ClientProtocolException, IOException {
     HttpClient client = HttpClientBuilder.create().build();
     HttpGet getMethod = new HttpGet(url);
-    try {
-      return client.execute(getMethod);
-    } catch (ClientProtocolException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return null;
+    // TODO: handle exception
+    return client.execute(getMethod);
   }
 
   private String readAll(Reader rd) throws IOException {
