@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.home.github.Utility.FileLoader.load;
+import static com.home.github.utility.FileLoader.load;
 
 public class GithubReader {
 
