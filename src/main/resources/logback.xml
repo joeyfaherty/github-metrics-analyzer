@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="USER_HOME" value="/home/joey" />
+
+    <!-- appender to log to STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>
+                <!-- time pattern, log level, Class, Message -->
+                %d{"yyyy-MM-dd'T'HH:mm:ss,SSS"} %-5level %logger - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!-- appender to log to file on filesystem -->
+    <appender name="FILE-LOGS"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${USER_HOME}/debug.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                <!-- time pattern, log level, Class, Message -->
+                %d{yyyy-MM-dd HH:mm:ss} %-5level %logger - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${USER_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Send logs to both console and file -->
+    <Root level="DEBUG">
+        <appender-ref ref="FILE-LOGS"/>
+        <Appender-Ref ref="STDOUT"/>
+    </Root>
+
+</configuration>
+
