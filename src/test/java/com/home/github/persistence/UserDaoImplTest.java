@@ -29,7 +29,7 @@ public class UserDaoImplTest {
     }
 
     @Test
-    public void save() {
+    public void testSaveAndRetrieve() {
         // save user
         User user = new User(USER_ID);
         user.setName("joey");
