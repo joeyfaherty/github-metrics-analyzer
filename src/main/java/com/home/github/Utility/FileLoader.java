@@ -1,4 +1,4 @@
-package com.home.github.domain.Utility;
+package com.home.github.Utility;
 
 import org.apache.commons.configuration2.ConfigurationConverter;
 import org.apache.commons.configuration2.PropertiesConfiguration;

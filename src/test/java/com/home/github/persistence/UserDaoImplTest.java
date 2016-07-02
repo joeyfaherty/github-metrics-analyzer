@@ -1,10 +1,8 @@
 package com.home.github.persistence;
 
 import com.home.github.domain.User;
-import com.home.github.domain.UserDaoImpl;
-import com.home.github.domain.UserRepository;
+import com.home.github.domain.repositories.UserRepository;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

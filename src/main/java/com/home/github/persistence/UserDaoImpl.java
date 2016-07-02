@@ -1,7 +1,9 @@
-package com.home.github.domain;
+package com.home.github.persistence;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import com.home.github.domain.User;
+import com.home.github.domain.repositories.UserRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
