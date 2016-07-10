@@ -1,11 +1,11 @@
-package com.home.github.service;
+package com.metrics.github.service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.home.github.domain.User;
+import com.metrics.github.domain.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static com.home.github.utility.FileLoader.load;
+import static com.metrics.github.utility.FileLoader.load;
 
 public class GithubReader {
 

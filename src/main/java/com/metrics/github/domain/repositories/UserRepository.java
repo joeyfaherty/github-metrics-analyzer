@@ -1,6 +1,6 @@
-package com.home.github.domain.repositories;
+package com.metrics.github.domain.repositories;
 
-import com.home.github.domain.User;
+import com.metrics.github.domain.User;
 
 public interface UserRepository {
     void save(User user);

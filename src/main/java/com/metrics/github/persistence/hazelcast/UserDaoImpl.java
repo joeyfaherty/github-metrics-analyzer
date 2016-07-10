@@ -1,13 +1,16 @@
-package com.home.github.persistence;
+package com.metrics.github.persistence.hazelcast;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import com.home.github.domain.User;
-import com.home.github.domain.repositories.UserRepository;
+import com.metrics.github.domain.User;
+import com.metrics.github.domain.repositories.UserRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * hazelcast specific dao implementation
+ */
 public class UserDaoImpl implements UserRepository {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(UserDaoImpl.class);

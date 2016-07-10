@@ -1,4 +1,4 @@
-package com.home.github.domain;
+package com.metrics.github.domain;
 
 import javax.annotation.Generated;
 
@@ -526,7 +526,7 @@ public class User implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-/*    @Override
+    @Override
     public boolean equals(Object other) {
         if (this == other) {
             return true;
@@ -541,6 +541,6 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }*/
+    }
 
 }

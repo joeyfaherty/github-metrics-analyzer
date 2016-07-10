@@ -1,7 +1,7 @@
-package com.home.github.persistence;
+package com.metrics.github.persistence.hazelcast;
 
-import com.home.github.domain.User;
-import com.home.github.domain.repositories.UserRepository;
+import com.metrics.github.domain.User;
+import com.metrics.github.domain.repositories.UserRepository;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -22,7 +22,6 @@ public class UserDaoImplTest {
 
     @AfterTest
     public void tearDown() {
-        // shut down hazelcast TODO
         userRepository = null;
     }
 
