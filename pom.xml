@@ -13,9 +13,21 @@
         <logback.version>1.1.7</logback.version>
         <testng.version>6.9.10</testng.version>
         <guice.version>4.0</guice.version>
+        <jersey.version>2.22.2</jersey.version>
     </properties>
 
     <dependencies>
+        <!-- Jersey related dependencies -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
@@ -76,5 +88,22 @@
             <version>${testng.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- plugin to run jetty server with command: mvn jetty:run -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>
