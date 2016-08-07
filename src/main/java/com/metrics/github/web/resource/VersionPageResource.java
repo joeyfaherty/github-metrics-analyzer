@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 
 import com.metrics.github.utility.FileLoader;
 
-@Path("/my-version-resource")
+@Path("/current-version")
 public class VersionPageResource {
 
     public static final String versionDetails;
@@ -17,7 +17,7 @@ public class VersionPageResource {
         versionDetails = FileLoader.convertFileContentToString(fileName);
     }
 
-    @Get
+    @GET
     @Produces("text/plain")
     public String getProjectVersion() {
         return versionDetails;

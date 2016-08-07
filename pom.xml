@@ -5,6 +5,7 @@
     <groupId>com.jf.home</groupId>
     <artifactId>github-metrics-analyser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -92,6 +93,7 @@
     <build>
         <plugins>
             <!-- plugin to run jetty server with command: mvn jetty:run -->
+            <!-- Not needed when deployed in a docker container -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
