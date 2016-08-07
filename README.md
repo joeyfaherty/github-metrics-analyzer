@@ -2,7 +2,7 @@
 
 ###### Please access the version page of this project in the following way:
 
-* `git clone github-metrics-analyzer.git`
+* `git clone https://github.com/joeyfaherty/github-metrics-analyzer.git`
 * `cd github-metrics-analyzer/`
 * `chmod +x buildDockerContainerWithWar.sh`
 * `./buildDockerContainerWithWar.sh`
