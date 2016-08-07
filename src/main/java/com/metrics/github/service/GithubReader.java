@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import com.metrics.github.domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,17 +24,25 @@ public class GithubReader {
     private Gson gson = new Gson();
     private JsonParser parser = new JsonParser();
 
-    public User readParseToUserObject() throws IOException {
-        // Connect to the URL using java's native library
-        URL url = new URL(load(FILE_NAME).getProperty("github.url"));
-        HttpURLConnection request = (HttpURLConnection) url.openConnection();
-        request.connect();
+    private static final Logger LOGGER = LoggerFactory.getLogger(GithubReader.class);
 
-        // Convert to a JSON object to print data
-        JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent())); //Convert the input stream to a json element
-        JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
-        User user = gson.fromJson(rootobj, User.class);
-        return user;
+    public User readParseToUserObject() {
+        try {
+            // Connect to the URL using java's native library
+            URL url = new URL(load(FILE_NAME).getProperty("github.url"));
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+            request.connect();
+
+            // Convert to a JSON object to print data
+            JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent())); //Convert the input stream to a json element
+            JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object.
+            User user = gson.fromJson(rootobj, User.class);
+            return user;
+        } catch (IOException e) {
+            LOGGER.error("Cannot access github URL");
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
