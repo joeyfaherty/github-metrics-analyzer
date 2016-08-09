@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import com.metrics.github.domain.User;
+import com.metrics.github.utility.FileLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +15,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static com.metrics.github.utility.FileLoader.load;
 
 public class GithubReader {
 
@@ -29,7 +28,7 @@ public class GithubReader {
     public User readParseToUserObject() {
         try {
             // Connect to the URL using java's native library
-            URL url = new URL(load(FILE_NAME).getProperty("github.url"));
+            URL url = new URL(FileLoader.load(FILE_NAME).getProperty("github.url"));
             HttpURLConnection request = (HttpURLConnection) url.openConnection();
             request.connect();
 
