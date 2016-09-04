@@ -1,5 +1,9 @@
 package com.metrics.github.persistence.jdbc;
 
+import com.metrics.github.web.listener.MetricsContextListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,15 +11,17 @@ import java.sql.Statement;
 
 public class DatabaseUtility {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseUtility.class);
+
     // docker IP will remain the same if container is built off same image
     // run docker with
     // docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpasswo -d 6af1d04a2f99
-    // TODO: Tidy Up
-    private static final String POSTGRES_HOST = "172.17.0.2";
-    private static final int POSTGRES_PORT = 5432;
-    private static final String POSTGRES_DATABASE = "postgres";
-    private static final String POSTGRES_USER = "postgres";
-    private static final String POSTGRES_PASSWORD = "mysecretpassword";
+    // TODO: remove hardcoded postgres host
+    public static final String POSTGRES_HOST = "172.17.0.2";
+    public static final String POSTGRES_PORT = "5432";
+    public static final String POSTGRES_DATABASE = "postgres";
+    public static final String POSTGRES_USER = "postgres";
+    public static final String POSTGRES_PASSWORD = "password";
 
     private static Connection connection;
 
@@ -25,10 +31,10 @@ public class DatabaseUtility {
             // specify which driver
             Class.forName("org.postgresql.Driver");
             // establish a connection
-            connection = DriverManager.getConnection(String.format("jdbc:postgresql://%s:%s/%s", POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DATABASE), POSTGRES_USER, POSTGRES_PASSWORD);
+            String dbUrl = String.format("jdbc:postgresql://%s:%s/%s", POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DATABASE);
+            connection = DriverManager.getConnection(dbUrl, POSTGRES_USER, POSTGRES_PASSWORD);
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO handle properly
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return connection;
     }
@@ -37,13 +43,12 @@ public class DatabaseUtility {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("Error closing database connection", e);
         }
     }
 
     public static void main(String[] args) {
         createTable(getConnection());
-
     }
 
     public static void createTable(Connection connection) {
