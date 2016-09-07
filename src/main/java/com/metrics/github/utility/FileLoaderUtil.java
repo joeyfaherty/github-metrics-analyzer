@@ -11,7 +11,7 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class FileLoader {
+public class FileLoaderUtil {
 
     public static Properties load(String path) {
         Configurations configurations = new Configurations();
@@ -27,7 +27,7 @@ public class FileLoader {
     }
 
     public static String convertFileContentToString(String fileName) {
-        InputStream is = FileLoader.class.getClassLoader().getResourceAsStream(fileName);
+        InputStream is = FileLoaderUtil.class.getClassLoader().getResourceAsStream(fileName);
         Scanner scanner = new Scanner(is).useDelimiter("\\A");
         return scanner.hasNext() ? scanner.next() : "";
     }

@@ -7,7 +7,7 @@
 * `chmod +x buildDockerContainerWithWar.sh`
 * `./buildDockerContainerWithWar.sh`
 
-URL: `LOCAL_IP:8080/github-metrics/webapi/current-version`
+URL: `LOCAL_IP:8080/github-metrics/current-version`
 
 ***
 

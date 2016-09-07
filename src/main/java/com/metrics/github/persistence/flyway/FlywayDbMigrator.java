@@ -1,4 +1,4 @@
-package com.metrics.github.docker.installer;
+package com.metrics.github.persistence.flyway;
 
 import com.metrics.github.persistence.jdbc.DatabaseUtility;
 import org.flywaydb.core.Flyway;

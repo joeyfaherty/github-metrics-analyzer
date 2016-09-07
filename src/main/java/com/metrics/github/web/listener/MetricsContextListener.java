@@ -1,6 +1,7 @@
 package com.metrics.github.web.listener;
 
-import com.metrics.github.docker.installer.FlywayDbMigrator;
+import com.metrics.github.eventhandling.EventHandler;
+import com.metrics.github.persistence.flyway.FlywayDbMigrator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,12 +15,15 @@ public class MetricsContextListener implements ServletContextListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MetricsContextListener.class);
 
+    // TODO: introduce DI?
     private FlywayDbMigrator flywayDbMigrator = new FlywayDbMigrator();
+    private EventHandler eventHandler = new EventHandler();
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         LOGGER.info("Context initializing");
         flywayDbMigrator.deployDatabase();
+        eventHandler.readAndSave();
     }
 
     @Override

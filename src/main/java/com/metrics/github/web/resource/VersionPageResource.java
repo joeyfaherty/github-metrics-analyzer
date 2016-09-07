@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import com.metrics.github.utility.FileLoader;
+import com.metrics.github.utility.FileLoaderUtil;
 
 @Path("/current-version")
 public class VersionPageResource {
@@ -14,7 +14,7 @@ public class VersionPageResource {
     private static final String fileName = "version.txt";
 
     static {
-        versionDetails = FileLoader.convertFileContentToString(fileName);
+        versionDetails = FileLoaderUtil.convertFileContentToString(fileName);
     }
 
     @GET
